@@ -20,8 +20,20 @@ class Board extends React.Component {
       squares: Array(9).fill(null),
       xIsNext: true,
     };
+      
+      this.startNewGame = this.startNewGame.bind(this);
   }
 
+    startNewGame(){
+      this.setState  ({
+      squares: Array(9).fill(null),
+      xIsNext: true,
+    });
+        
+        
+        
+    }
+    
   handleClick(i) {
     const squares = this.state.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
@@ -70,7 +82,7 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-            <div><button onClick={()=>window.location.reload()} className="buttonStyle">Start new game</button></div>
+            <div><button onClick={this.startNewGame} className="buttonStyle">Start new game</button></div>
       </div>
         
     );
